@@ -5,14 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Demos/Marker/AR Marker Simple Button/ARMarker Simple Button.unity
     guid: 248dda6d9653f4ec5bb7484b9e0875af
   - enabled: 0
     path: Assets/Demos/Marker/AR Marker Rotate and Scale/ARMarker Rotate and Scale.unity
     guid: 065497cde0b9c46d99aaf798c5d58e69
   - enabled: 0
-    path: Assets/Scenes/WebXR.unity
+    path: Assets/Scenes-Develpment/WebXR.unity
     guid: 36432bfdb3009472289632c1c710650e
   - enabled: 0
     path: Assets/Demos/Markerless/AR Markerless HitTest/HitTest.unity
@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Demos/Markerless/AR Markerless ImageTracking/MultipleImageTracking/MultipleImageTracking.unity
     guid: de6fadf9598693549ab2d806efda1a51
-  - enabled: 1
+  - enabled: 0
     path: Assets/Demos/Markerless/AR Markerless ImageTracking/SingleImageTracking/SingleImageTracking.unity
     guid: fcc8bdde1f18fc1409af4c834043f32e
   m_configObjects: {}
