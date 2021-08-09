@@ -1,61 +1,11 @@
-
-var buildUrl = "Build";
-var loaderUrl = buildUrl + "/docs.loader.js";
-var config = {
-  dataUrl: buildUrl + "/docs.data.unityweb",
-  frameworkUrl: buildUrl + "/docs.framework.js.unityweb",
-  codeUrl: buildUrl + "/docs.wasm.unityweb",
-  streamingAssetsUrl: "StreamingAssets",
-  companyName: "DefaultCompany",
-  productName: "ARWT",
-  productVersion: "0.1",
-};
-var container = document.querySelector("#unity-container");
-var canvas = document.querySelector("#unity-canvas");
-var loadingBar = document.querySelector("#unity-loading-bar");
-var progressBarFull = document.querySelector("#unity-progress-bar-full");
-const unityInstanceM=null;
-// var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-// var mobileWarning = document.querySelector("#unity-mobile-warning");
-var mywidth = innerWidth;
-var myheight = innerHeight;
-var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-        //   fullscreenButton.onclick = () => {
-        //     unityInstance.SetFullscreen(1);
-        //     console.log("Full Screen click");
-        //   };
-        unityInstanceM=unityInstance;
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-     // document.body.appendChild(script);
-//const unityInstance = UnityLoader.instantiate("unityContainer", "https://poppod.github.io/ARWT/"); 
-
-// const unityInstance= createUnityInstance(document.querySelector("#unityContainer"), {
-//     dataUrl: buildUrl + "/docs.data",
-//     frameworkUrl: buildUrl + "/docs.framework.js",
-//     codeUrl: buildUrl + "/docs.wasm",
-//     streamingAssetsUrl: "StreamingAssets",
-//     companyName: "DefaultCompany",
-//     productName: "ARWT",
-//     productVersion: "0.1",
-//     // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-//     // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-//   });
+const unityInstance = UnityLoader.instantiate("unityContainer", "Build/test2019.json");
 let isCameraReady = false;
 let isDetectionManagerReady = false;
 let gl = null;
 
 function cameraReady(){
     isCameraReady = true;
-    gl = unityInstanceM.Module.ctx;
+    gl = unityInstance.Module.ctx;
 }
 
 function detectionManagerReady(){
@@ -84,7 +34,7 @@ AFRAME.registerComponent('markercontroller', {
         const serializedInfos = `${this.data.name},${this.el.object3D.visible},${position.toArray()},${rotation.toArray()},${scale.toArray()}`;
 
         if(isDetectionManagerReady){
-          unityInstanceM.SendMessage("DetectionManager", "markerInfos", serializedInfos);
+          unityInstance.SendMessage("DetectionManager", "markerInfos", serializedInfos);
         }
     } 
 });
@@ -105,9 +55,9 @@ AFRAME.registerComponent('cameratransform', {
         const rotCam = `${[...camro.toArray()]}`
  
         if(isCameraReady){
-            unityInstanceM.SendMessage("Main Camera", "setProjection", serializedProj);
-            unityInstanceM.SendMessage("Main Camera", "setPosition", posCam);
-            unityInstanceM.SendMessage("Main Camera", "setRotation", rotCam);
+            unityInstance.SendMessage("Main Camera", "setProjection", serializedProj);
+            unityInstance.SendMessage("Main Camera", "setPosition", posCam);
+            unityInstance.SendMessage("Main Camera", "setRotation", rotCam);
 
             let w = window.innerWidth;
             let h = window.innerHeight; 
@@ -121,7 +71,7 @@ AFRAME.registerComponent('cameratransform', {
 
             const size = `${w},${h}`
 
-            unityInstanceM.SendMessage("Canvas", "setSize", size);
+            unityInstance.SendMessage("Canvas", "setSize", size);
         }
 
         if(gl != null){
