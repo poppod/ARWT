@@ -116,7 +116,7 @@ window.ARWT.onButtonClicked = () => {
 
 function onSessionStarted(session) {
     xrSession = session;
-
+    alert("start immersive AR session.");
     session.addEventListener('end', onSessionEnded);
     session.addEventListener('select', onSelect);
 
