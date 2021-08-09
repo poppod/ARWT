@@ -53,6 +53,12 @@ function initUnity() {
     unityInstance.Module.InternalBrowser.requestAnimationFrame = frameInject;
     WebXR = unityInstance.Module.WebXR;
     initImageTrackign();
+    const supported = await navigator.xr.isSessionSupported('immersive-ar');
+    if (supported) {
+        alert("not support immersive AR session.");
+    } else {
+        alert("support immersive AR session.");
+    }
     // setupObject();
 }
 
