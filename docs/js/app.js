@@ -80,12 +80,12 @@ window.ARWT.onButtonClicked = () => {
     if(!xrSession){
         const options = !WebXR.imageTrackingRequired ?
         {
-            requiredFeatures: ['hit-test']
+            requiredFeatures: ['local-floor', 'hit-test']
             //'local-floor',
         }
         :
         {
-            requiredFeatures: ['image-tracking'],
+            requiredFeatures: ['local-floor', 'image-tracking'],
             trackedImages : imgsBitmap
             //'local-floor', 
             // trackedImages: [
