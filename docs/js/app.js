@@ -15,7 +15,7 @@ let xrTransientInputHitTestSource = null;
 
 let imgsBitmap = [];
 let isImgTrackingReady = false;
-const sessionM = await navigator.xr.requestSession('immersive-ar', {
+const sessionM =  navigator.xr.requestSession('immersive-ar', {
     requiredFeatures: ['local-floor','image-tracking'],
     trackedImages : imgsBitmap
   });
