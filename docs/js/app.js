@@ -15,12 +15,6 @@ let xrTransientInputHitTestSource = null;
 
 let imgsBitmap = [];
 let isImgTrackingReady = false;
-const supported = await navigator.xr.isSessionSupported('immersive-ar');
-    if (supported) {
-        alert("not support immersive AR session.");
-    } else {
-        alert("support immersive AR session.");
-    }
 async function initImageTrackign () {
     // if(WebXR.imageTrackingRequired){
     //     const img = document.getElementById('img');
@@ -59,7 +53,6 @@ function initUnity() {
     unityInstance.Module.InternalBrowser.requestAnimationFrame = frameInject;
     WebXR = unityInstance.Module.WebXR;
     initImageTrackign();
-    
     // setupObject();
 }
 
@@ -81,13 +74,11 @@ window.ARWT.onButtonClicked = () => {
         const options = !WebXR.imageTrackingRequired ?
         {
             requiredFeatures: ['local-floor', 'hit-test']
-            //'local-floor',
         }
         :
         {
             requiredFeatures: ['local-floor', 'image-tracking'],
             trackedImages : imgsBitmap
-            //'local-floor', 
             // trackedImages: [
             //     {
             //         image: imgBitmap,
@@ -95,7 +86,7 @@ window.ARWT.onButtonClicked = () => {
             //     }
             // ]
         }
-         navigator.xr.requestSession('immersive-ar', options).then(onSessionStarted, onRequestSessionError);
+        navigator.xr.requestSession('immersive-ar', options).then(onSessionStarted, onRequestSessionError);
     }else{
         xrSession.end();
     }
