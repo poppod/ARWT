@@ -1,4 +1,4 @@
-const unityInstance = UnityLoader.instantiate("unityContainer", "Build/ImgTrackTest.json");
+const unityInstance = UnityLoader.instantiate("unityContainer", "Build/docs.json");
 let isCameraReady = false;
 let isDetectionManagerReady = false;
 let gl = null;
