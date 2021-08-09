@@ -1,4 +1,53 @@
-const unityInstance = UnityLoader.instantiate("unityContainer", "https://poppod.github.io/ARWT/");  
+
+var buildUrl = "Build";
+var loaderUrl = buildUrl + "/docs.loader.js";
+var config = {
+  dataUrl: buildUrl + "/docs.data",
+  frameworkUrl: buildUrl + "/docs.framework.js",
+  codeUrl: buildUrl + "/docs.wasm",
+  streamingAssetsUrl: "StreamingAssets",
+  companyName: "DefaultCompany",
+  productName: "ARWT",
+  productVersion: "0.1",
+};
+// var container = document.querySelector("#unity-container");
+// var canvas = document.querySelector("#unity-canvas");
+// var loadingBar = document.querySelector("#unity-loading-bar");
+// var progressBarFull = document.querySelector("#unity-progress-bar-full");
+// const unityInstance=null;
+// // var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+// // var mobileWarning = document.querySelector("#unity-mobile-warning");
+// var mywidth = innerWidth;
+// var myheight = innerHeight;
+// var script = document.createElement("script");
+//       script.src = loaderUrl;
+//       script.onload = () => {
+//         createUnityInstance(canvas, config, (progress) => {
+//           progressBarFull.style.width = 100 * progress + "%";
+//         }).then((unityInstance) => {
+//           loadingBar.style.display = "none";
+//         //   fullscreenButton.onclick = () => {
+//         //     unityInstance.SetFullscreen(1);
+//         //     console.log("Full Screen click");
+//         //   };
+//         unityInstance=unityInstance;
+//         }).catch((message) => {
+//           alert(message);
+//         });
+//       };
+//       document.body.appendChild(script);
+//const unityInstance = UnityLoader.instantiate("unityContainer", "https://poppod.github.io/ARWT/");  
+const unityInstance= createUnityInstance(document.querySelector("#unity-canvas"), {
+    dataUrl: buildUrl + "/docs.data",
+    frameworkUrl: buildUrl + "/docs.framework.js",
+    codeUrl: buildUrl + "/docs.wasm",
+    streamingAssetsUrl: "StreamingAssets",
+    companyName: "DefaultCompany",
+    productName: "ARWT",
+    productVersion: "0.1",
+    // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+    // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+  });
 let isCameraReady = false;
 let isDetectionManagerReady = false;
 let gl = null;

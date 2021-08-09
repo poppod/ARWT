@@ -14,6 +14,12 @@
 
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs vr-mode-ui="enabled: false" copycanvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
       <div id="unityContainer" style="z-index: 2" ></div>
       <!-- <a-marker preset="hiro"> <a-box></a-box> </a-marker> -->
       <!-- <a-marker type="pattern" url="data/markers/pattern-arjs.patt"><a-box></a-box></a-marker> -->
