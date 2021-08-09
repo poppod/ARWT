@@ -37,7 +37,7 @@ var config = {
 //       };
 //       document.body.appendChild(script);
 //const unityInstance = UnityLoader.instantiate("unityContainer", "https://poppod.github.io/ARWT/");  
-const unityInstance= createUnityInstance(document.querySelector("#unity-canvas"), {
+const unityInstance= createUnityInstance(document.querySelector("#unityContainer"), {
     dataUrl: buildUrl + "/docs.data",
     frameworkUrl: buildUrl + "/docs.framework.js",
     codeUrl: buildUrl + "/docs.wasm",
