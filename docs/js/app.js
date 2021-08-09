@@ -35,7 +35,7 @@ var script = document.createElement("script");
           alert(message);
         });
       };
-      document.body.appendChild(script);
+     // document.body.appendChild(script);
 //const unityInstance = UnityLoader.instantiate("unityContainer", "https://poppod.github.io/ARWT/"); 
 
 // const unityInstance= createUnityInstance(document.querySelector("#unityContainer"), {
