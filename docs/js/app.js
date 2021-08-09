@@ -79,12 +79,14 @@ window.ARWT.onButtonClicked = () => {
     if(!xrSession){
         const options = !WebXR.imageTrackingRequired ?
         {
-            requiredFeatures: ['local-floor', 'hit-test']
+            requiredFeatures: ['hit-test']
+            //'local-floor',
         }
         :
         {
-            requiredFeatures: ['local-floor', 'image-tracking'],
+            requiredFeatures: ['image-tracking'],
             trackedImages : imgsBitmap
+            //'local-floor', 
             // trackedImages: [
             //     {
             //         image: imgBitmap,
@@ -92,7 +94,7 @@ window.ARWT.onButtonClicked = () => {
             //     }
             // ]
         }
-        navigator.xr.requestSession('immersive-ar', options).then(onSessionStarted, onRequestSessionError);
+        await navigator.xr.requestSession('immersive-ar', options).then(onSessionStarted, onRequestSessionError);
     }else{
         xrSession.end();
     }
