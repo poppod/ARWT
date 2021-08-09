@@ -15,6 +15,10 @@ let xrTransientInputHitTestSource = null;
 
 let imgsBitmap = [];
 let isImgTrackingReady = false;
+const sessionM = await navigator.xr.requestSession('immersive-ar', {
+    requiredFeatures: ['local-floor','image-tracking'],
+    trackedImages : imgsBitmap
+  });
 async function initImageTrackign () {
     // if(WebXR.imageTrackingRequired){
     //     const img = document.getElementById('img');
@@ -70,23 +74,25 @@ function initUnity() {
 // }
 
 window.ARWT.onButtonClicked = () => {
+    xrSession=sessionM ;
     if(!xrSession){
-        const options = !WebXR.imageTrackingRequired ?
-        {
-            requiredFeatures: ['local-floor', 'hit-test']
-        }
-        :
-        {
-            requiredFeatures: ['local-floor', 'image-tracking'],
-            trackedImages : imgsBitmap
-            // trackedImages: [
-            //     {
-            //         image: imgBitmap,
-            //         widthInMeters: 0.05
-            //     }
-            // ]
-        }
-        navigator.xr.requestSession('immersive-ar', options).then(onSessionStarted, onRequestSessionError);
+        // const options = !WebXR.imageTrackingRequired ?
+        // {
+        //     requiredFeatures: ['local-floor', 'hit-test']
+        // }
+        // :
+        // {
+        //     requiredFeatures: ['local-floor', 'image-tracking'],
+        //     trackedImages : imgsBitmap
+        //     // trackedImages: [
+        //     //     {
+        //     //         image: imgBitmap,
+        //     //         widthInMeters: 0.05
+        //     //     }
+        //     // ]
+        // }
+        // navigator.xr.requestSession('immersive-ar', options).then(onSessionStarted, onRequestSessionError);
+        //onSessionStarted(sessionM);
     }else{
         xrSession.end();
     }
