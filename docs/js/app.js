@@ -2,9 +2,9 @@
 var buildUrl = "Build";
 var loaderUrl = buildUrl + "/docs.loader.js";
 var config = {
-  dataUrl: buildUrl + "/docs.data",
-  frameworkUrl: buildUrl + "/docs.framework.js",
-  codeUrl: buildUrl + "/docs.wasm",
+  dataUrl: buildUrl + "/docs.data.unityweb",
+  frameworkUrl: buildUrl + "/docs.framework.js.unityweb",
+  codeUrl: buildUrl + "/docs.wasm.unityweb",
   streamingAssetsUrl: "StreamingAssets",
   companyName: "DefaultCompany",
   productName: "ARWT",
