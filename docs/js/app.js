@@ -15,10 +15,6 @@ let xrTransientInputHitTestSource = null;
 
 let imgsBitmap = [];
 let isImgTrackingReady = false;
-// const sessionM =  navigator.xr.requestSession('immersive-ar', {
-//     requiredFeatures: ['local-floor','image-tracking'],
-//     trackedImages : imgsBitmap
-//   });
 async function initImageTrackign () {
     // if(WebXR.imageTrackingRequired){
     //     const img = document.getElementById('img');
@@ -74,22 +70,6 @@ function initUnity() {
 // }
 
 window.ARWT.onButtonClicked = () => {
-    // const options={
-    //     requiredFeatures: ['local-floor', 'image-tracking'],
-    //     trackedImages : imgsBitmap
-    // }
-    // if (!xrSession) {
-    //     navigator.xr.requestSession('immersive-ar',options)
-    //     .then((session) => {
-    //       xrSession = session;
-    //       // onSessionStarted() not shown for reasons of brevity and clarity.
-    //       onSessionStarted(xrSession);
-    //     });
-    //   } else {
-    //     // Button is a toggle button.
-    //     xrSession.end().then(() => xrSession = null);
-    //   }
-   
     if(!xrSession){
         const options = !WebXR.imageTrackingRequired ?
         {
@@ -97,9 +77,8 @@ window.ARWT.onButtonClicked = () => {
         }
         :
         {
-            requiredFeatures: ['local-floor','image-tracking'],
+            requiredFeatures: ['local-floor', 'image-tracking'],
             trackedImages : imgsBitmap
-            //, 'image-tracking'
             // trackedImages: [
             //     {
             //         image: imgBitmap,
@@ -107,18 +86,7 @@ window.ARWT.onButtonClicked = () => {
             //     }
             // ]
         }
-        navigator.xr.requestSession('immersive-ar', {
-            requiredFeatures: ['local-floor','image-tracking'],
-            trackedImages : imgsBitmap
-            //, 'image-tracking'
-            // trackedImages: [
-            //     {
-            //         image: imgBitmap,
-            //         widthInMeters: 0.05
-            //     }
-            // ]
-        }).then(onSessionStarted, onRequestSessionError);
-        
+        navigator.xr.requestSession('immersive-ar', options).then(onSessionStarted, onRequestSessionError);
     }else{
         xrSession.end();
     }
@@ -126,7 +94,7 @@ window.ARWT.onButtonClicked = () => {
 
 function onSessionStarted(session) {
     xrSession = session;
-    alert("start immersive AR session.");
+
     session.addEventListener('end', onSessionEnded);
     session.addEventListener('select', onSelect);
 
@@ -289,8 +257,7 @@ function onXRFrame(frame) {
 }
 
 function onRequestSessionError(ex) {
-    alert(ex.message);
-    //alert("Failed to start immersive AR session.");
+    alert("Failed to start immersive AR session.");
     console.error(ex.message);
 }
 
