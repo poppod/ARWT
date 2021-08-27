@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes-Develpment/WebXR.unity
     guid: 36432bfdb3009472289632c1c710650e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Demos/Markerless/AR Markerless HitTest/HitTest.unity
     guid: 038df574909e79b42bd738d9e7ae4db1
   - enabled: 0
@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Demos/Markerless/AR Markerless ImageTracking/SingleImageTracking/SingleImageTracking.unity
     guid: fcc8bdde1f18fc1409af4c834043f32e
+  - enabled: 1
+    path: Assets/Scenes/SimpleScaleTest.unity
+    guid: e5edea73a36af0e40a38a5457cdb6045
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 72b1a91ccf2b1bc488bc066de2c0e5a4,
       type: 2}
